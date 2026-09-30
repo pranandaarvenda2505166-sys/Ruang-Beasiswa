@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Ruang Beasiswa – Mentor Beasiswa Terbaik</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+<div class="wrap nav">
+<a class="logo" href="#beranda"><span class="ic">🎓</span>Ruang <b>Beasiswa</b></a>
+<nav id="nav"><ul>
+<li><a href="#beranda">Beranda</a></li><li><a href="#katalog">Beasiswa</a></li><li><a href="#mentor">Mentor</a></li><li><a href="#persiapan">Persiapan</a></li><li><a href="#mentoring">Mentoring</a></li><li><a href="#ai">Tanya AI</a></li><li><a href="#kontak">Kontak</a></li>
+</ul></nav>
+<div style="display:flex;gap:8px;align-items:center">
+<button class="btn" id="login">Masuk/Daftar</button>
+<button class="burger" id="burger" aria-label="Menu">☰</button>
+</div>
+</div>
+</header>
+
+<main>
+<div class="hero" id="beranda"><div class="wrap">
+<div>
+<h1>Dapatkan Beasiswa Impianmu Bersama <em>Mentor Terbaik!</em></h1>
+<p>Belajar langsung dari para awardee LPDP, Chevening, AAS, dan lainnya. Konsultasi personal untuk esai, wawancara, hingga strategi pendaftaran. Cek juga beasiswa yang paling cocok dengan profilmu.</p>
+<a href="#katalog"><button class="btn">Cek Beasiswa yang Cocok →</button></a> <a href="#mentor"><button class="btn ghost">Pilih Mentor</button></a>
+<div class="stats"><div><b>500+</b>Sesi konsultasi</div><div><b>50+</b>Mentor awardee</div><div><b>12</b>Beasiswa populer</div></div>
+</div>
+<div class="stage">
+<div class="bubble" id="bubble">Halo! Aku Bea 👋 Siap bantu kamu kejar beasiswa!</div>
+<svg class="mascot" id="mascot" viewBox="0 0 300 320" role="img" aria-label="Maskot Bea">
+<ellipse cx="150" cy="306" rx="70" ry="9" fill="#000" opacity=".2"/>
+<circle class="star" cx="40" cy="60" r="5" fill="#f5b942"/><circle class="star" cx="260" cy="40" r="4" fill="#ffe3a3"/><circle class="star" cx="270" cy="150" r="3" fill="#f5b942"/>
+<rect x="95" y="190" width="110" height="100" rx="42" fill="#f5b942"/>
+<rect x="128" y="190" width="44" height="54" rx="8" fill="#fff"/>
+<path d="M150 190l-14 30h28z" fill="#12285a"/>
+<rect x="100" y="280" width="34" height="18" rx="9" fill="#12285a"/><rect x="166" y="280" width="34" height="18" rx="9" fill="#12285a"/>
+<path d="M98 215q-26 20-16 46" stroke="#f5b942" stroke-width="20" fill="none" stroke-linecap="round"/>
+<g class="wave"><path d="M204 205q40-6 44-52" stroke="#f5b942" stroke-width="20" fill="none" stroke-linecap="round"/><circle cx="248" cy="148" r="13" fill="#ffd8b0"/></g>
+<circle cx="150" cy="130" r="64" fill="#ffd8b0"/>
+<path d="M86 122q4-58 64-58t64 58q-30-30-64-30t-64 30z" fill="#3b2a20"/>
+<rect x="88" y="52" width="124" height="14" rx="3" fill="#12285a"/><path d="M150 26l-84 30 84 28 84-28z" fill="#1d3b80"/>
+<path d="M234 56v42" stroke="#f5b942" stroke-width="3"/><circle cx="234" cy="102" r="6" fill="#f5b942"/>
+<g class="blink"><circle cx="126" cy="134" r="8" fill="#12285a"/><circle cx="174" cy="134" r="8" fill="#12285a"/><circle cx="129" cy="131" r="3" fill="#fff"/><circle cx="177" cy="131" r="3" fill="#fff"/></g>
+<circle cx="108" cy="154" r="9" fill="#ff9e9e" opacity=".55"/><circle cx="192" cy="154" r="9" fill="#ff9e9e" opacity=".55"/>
+<path d="M134 158q16 18 32 0z" fill="#fff" stroke="#12285a" stroke-width="3" stroke-linejoin="round"/>
+</svg>
+</div>
+</div></div>
+
+<section id="katalog" class="bsx"><div class="wrap">
+  <h2>Beasiswa yang Cocok untukmu</h2><p class="sub">Isi profil singkat. Daftar beasiswa langsung diurutkan dari yang paling cocok, lengkap dengan syarat, deadline, dan dokumen.</p><div class="matcher">
+    <h2>Profilmu</h2>
+    <label>Jenjang yang dituju
+      <select id="p-jenjang">
+        <option value="S1">Kuliah S1 (siswa SMA/SMK)</option>
+        <option value="S2">S2</option>
+        <option value="S3">S3</option>
+      </select>
+    </label>
+    <label>IPK / rata-rata nilai (skala 4)
+      <input id="p-ipk" type="number" min="0" max="4" step="0.05" value="3.2">
+    </label>
+    <label>Sertifikat bahasa Inggris
+      <select id="p-ielts">
+        <option value="0">Belum punya</option>
+        <option value="5.5">IELTS 5.5 atau setara</option>
+        <option value="6.5">IELTS 6.5 atau setara</option>
+        <option value="7">IELTS 7.0 atau lebih</option>
+      </select>
+    </label>
+    <label class="check"><input id="p-eko" type="checkbox"> Dari keluarga kurang mampu</label>
+    <h3>Tiga yang paling cocok</h3>
+    <ol id="top3"></ol>
+  </div>
+<h3 class="ct">Semua beasiswa</h3>
+  <div class="tools">
+    <input id="sq" type="search" placeholder="Cari nama beasiswa">
+    <label class="check"><input id="only" type="checkbox"> Tampilkan yang cocok saja (80% ke atas)</label>
+  </div>
+  <div id="list"></div>
+  <p class="note">Data beasiswa dan tanggal di sini adalah contoh untuk demo. Selalu cek situs resmi penyelenggara sebelum mendaftar.</p>
+</div></section>
+<section id="mentor"><div class="wrap">
+<h2>Pilih Mentor Universitas Ternama</h2>
+<p class="sub">Temukan mentor sesuai kampus impian dan jenis beasiswa yang kamu incar.</p>
+<div class="filters">
+<input id="q" type="search" placeholder="🔍 Cari nama mentor, jurusan…">
+<select id="fu"><option value="">Semua Universitas</option></select>
+<select id="fs"><option value="">Semua Beasiswa</option></select>
+</div>
+<div class="grid" id="grid"></div>
+<div class="empty" id="empty">😕 Tidak ada mentor yang cocok. Coba ubah filter.</div>
+</div></section>
+
+<section id="persiapan" class="bsx" style="background:var(--card)"><div class="wrap">
+  <h2>Persiapan</h2>
+  <div class="two">
+    <div>
+      <h3>Pengingat deadline</h3>
+      <ul id="rem" class="plain"></ul>
+    </div>
+    <div>
+      <h3>Dokumen yang hampir selalu diminta</h3>
+      <ul id="docs" class="plain"></ul>
+    </div>
+    <div>
+      <h3>Layanan untuk memenuhi syarat</h3>
+      <ul class="plain">
+        <li>Pusat tes IELTS resmi untuk sertifikat bahasa Inggris</li>
+        <li>Tes TOEFL ITP di UPT bahasa kampus</li>
+        <li>Lembaga kursus persiapan IELTS dan TOEFL</li>
+      </ul>
+    </div>
+  </div>
+</div></section><section id="mentoring" class="bsx"><div class="wrap">
+  <h2>Mentoring dan kelas gratis</h2>
+  <div class="two">
+    <div>
+      <h3>Kelas yang dibuka</h3>
+      <ul class="plain">
+        <li><b>Menulis esai motivasi</b> tiap Sabtu pagi, daring</li>
+        <li><b>Simulasi wawancara</b> tiap dua minggu, daring</li>
+        <li><b>Strategi tes IELTS</b> tiap Rabu malam, daring</li>
+      </ul>
+      <h3>Mentor</h3>
+      <ul class="plain">
+        <li><b>Alumni beasiswa S2 luar negeri</b> membimbing esai dan wawancara</li>
+        <li><b>Awardee beasiswa dalam negeri</b> membimbing berkas dan strategi memilih</li>
+      </ul>
+    </div>
+    <form id="mform">
+      <h3>Lowongan calon mentor</h3>
+      <label>Nama <input name="n" required></label>
+      <label>Beasiswa yang pernah kamu terima <input name="b" required></label>
+      <label>Bidang yang ingin kamu bimbing <input name="t" required></label>
+      <button type="submit">Kirim lamaran</button>
+      <p id="mform-msg" role="status"></p>
+    </form>
+  </div>
+</div></section><section id="ai" class="bsx" style="background:var(--card)"><div class="wrap">
+  <h2>Tanya AI Assistant</h2>
+  <div class="chat">
+    <div id="log" aria-live="polite"></div>
+    <form id="ask"><input id="msg" placeholder="Contoh: apa syarat LPDP?" required><button>Kirim</button></form>
+  </div>
+  <p class="note">Ini asisten demo dengan jawaban dari data di halaman ini. Untuk versi sebenarnya, hubungkan ke API model AI.</p>
+</div></section>
+</main>
+
+<footer id="kontak"><div class="wrap"><div class="cols">
+<div><div class="logo" style="margin-bottom:8px"><span class="ic">🎓</span>Ruang <b>Beasiswa</b></div><p>Wujudkan studi impianmu bersama mentor terbaik.</p></div>
+<div><h4>Kontak</h4><p>✉️ halo@ruangbeasiswa.id</p><p>📱 WhatsApp: +62 812-0000-0000</p><p>📍 Surabaya, Indonesia</p></div>
+<div><h4>Jam Layanan</h4><p>Senin – Jumat: 09.00 – 20.00</p><p>Sabtu: 09.00 – 15.00</p></div>
+</div><p style="text-align:center;margin-top:28px;font-size:.85rem;opacity:.75">Ruang Beasiswa · Tugas Technopreneurship F3 Kelompok 1: Prananda Arvenda Yulhamzah, Ryad Rafa Zamzami, Sheva Nur Ramadhana, Shidqi Mafazi.<br>Data mentor, beasiswa, dan tanggal adalah contoh demo. Cek situs resmi penyelenggara sebelum mendaftar.</p></div></footer>
+
+<div class="modal" id="modal" role="dialog" aria-modal="true"><div class="box" id="box"></div></div>
+<div class="toast" id="toast"></div>
+
+<script src="mentor.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
